@@ -28,9 +28,35 @@ public class Ad {
 
         String[] lines = csvText.toString().split("\n");
         for (String line: lines){
-            ads.add(new Ad());
+            ads.add(new Ad(line));
         }
 
         return ads;
+    }
+
+    public Ad(String fileline){
+        String[] fieldValues = fileline.split(";");
+
+        id = Integer.parseInt(fieldValues[0]);
+        rooms = Integer.parseInt(fieldValues[1]);
+        latLong = fieldValues[2];
+        floors = Integer.parseInt(fieldValues[3]);
+        area = Integer.parseInt(fieldValues[4]);
+        description = fieldValues[5];
+        freeOfCharge = fieldValues[6].contains("1");
+        imageUrl = fieldValues[7];
+        createAt = LocalDate.parse(fieldValues[8]);
+
+        seller = new Seller(
+                Integer.parseInt(fieldValues[9]),
+                fieldValues[10],
+                fieldValues[11]
+        );
+
+        category = new Category(
+                Integer.parseInt(fieldValues[12]),
+                fieldValues[13]
+        );
+
     }
 }
