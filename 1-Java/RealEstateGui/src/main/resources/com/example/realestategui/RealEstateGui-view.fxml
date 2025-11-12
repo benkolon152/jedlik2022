@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.realestategui.RealEstateGuiController">
+   <children>
+      <ListView id="listView" fx:id="listView" layoutX="14.0" layoutY="18.0" prefHeight="565.0" prefWidth="200.0" />
+      <Label id="labelSeller" fx:id="labelSeller" layoutX="234.0" layoutY="27.0" text="Eladó neve:" AnchorPane.leftAnchor="214.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label id="labelPhone" fx:id="labelPhone" layoutX="234.0" layoutY="66.0" text="Eladó telefonszáma:" AnchorPane.leftAnchor="214.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label id="labelAds" fx:id="labelAds" layoutX="234.0" layoutY="174.0" text="Hírdetések száma:" AnchorPane.leftAnchor="214.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Button id="buttonAds" fx:id="buttonAds" layoutX="234.0" layoutY="113.0" mnemonicParsing="false" onAction="#onAdLoad" prefHeight="39.0" prefWidth="546.0" text="Hírdetések betöltése" />
+   </children>
+</AnchorPane>
