@@ -56,3 +56,8 @@
 .card-header{
     color: rgb(217, 243, 240);
 }
+
+.nav-item{
+    color: rgb(71, 71, 150);
+    font-weight: bold;
+}
