@@ -2,7 +2,9 @@ package com.example.realestategui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -17,6 +19,8 @@ public class RealEstateGuiController implements Initializable{
     @FXML public ListView<String> listView;
     @FXML public Label labelSeller;
     @FXML public Label labelPhone;
+    @FXML public Label labelAds;
+    @FXML public Button buttonAds;
     @FXML
     private Label welcomeText;
 
@@ -70,6 +74,24 @@ public class RealEstateGuiController implements Initializable{
             if (names.get(i) == selectedName){
                 labelPhone.setText("Eladó telefonszáma: " + phones.get(i));
             }
+        }
+    }
+
+    public void onAdLoad(ActionEvent actionEvent) throws SQLException {
+        String selectedName = listView.getSelectionModel().getSelectedItem();
+        System.out.println(selectedName);
+
+        PreparedStatement stmtCount = conn.prepareStatement("""
+                SELECT COUNT(realestates.id) AS CNT
+                FROM realestates
+                INNER JOIN sellers ON sellers.id = realestates.sellerId
+                WHERE sellers.name = ?
+                """);
+        stmtCount.setString(1, selectedName);
+        ResultSet result = stmtCount.executeQuery();
+        while (result.next()){
+            int count = result.getInt("CNT");
+            labelAds.setText("Hírdetések száma: " + count);
         }
     }
 }
