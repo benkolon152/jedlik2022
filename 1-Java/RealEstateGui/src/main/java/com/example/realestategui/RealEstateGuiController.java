@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 public class RealEstateGuiController implements Initializable{
     @FXML public ListView<String> listView;
+    @FXML public Label labelSeller;
     @FXML
     private Label welcomeText;
 
@@ -42,9 +43,21 @@ public class RealEstateGuiController implements Initializable{
             ObservableList<String> namesOList = FXCollections.observableArrayList(names);
             listView.setItems(namesOList);
 
+            listView.getSelectionModel().selectedItemProperty().addListener(
+                    (observable, oldValue, newValue) -> {
+                        onSellerSelected();
+                    }
+            );
+
             debugger();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onSellerSelected(){
+        String selectedName = listView.getSelectionModel().getSelectedItem();
+        System.out.println(selectedName);
+        labelSeller.setText("Eladó neve: " + selectedName);
     }
 }

@@ -14,7 +14,7 @@
 fx:controller="com.example.realestategui.RealEstateGuiController">
    <children>
       <ListView id="listView" fx:id="listView" layoutX="14.0" layoutY="18.0" prefHeight="565.0" prefWidth="200.0" />
-      <Label layoutX="234.0" layoutY="27.0" text="Eladó neve:" AnchorPane.leftAnchor="214.0">
+      <Label fx:id="labelSeller" id="labelSeller" layoutX="234.0" layoutY="27.0" text="Eladó neve:" AnchorPane.leftAnchor="214.0">
          <padding>
             <Insets left="10.0" />
          </padding>
