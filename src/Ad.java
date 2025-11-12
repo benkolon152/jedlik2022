@@ -27,7 +27,8 @@ public class Ad {
         f.close();
 
         String[] lines = csvText.toString().split("\n");
-        for (String line: lines){
+        for (int i = 1; i < lines.length; i++) {
+            String line = lines[i];
             ads.add(new Ad(line));
         }
 
