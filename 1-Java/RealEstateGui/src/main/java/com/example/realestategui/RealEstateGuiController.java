@@ -16,10 +16,15 @@ import java.util.ResourceBundle;
 public class RealEstateGuiController implements Initializable{
     @FXML public ListView<String> listView;
     @FXML public Label labelSeller;
+    @FXML public Label labelPhone;
     @FXML
     private Label welcomeText;
 
     public Connection conn;
+
+    public List<String> names;
+
+    public List<String> phones;
 
     public void debugger(){int i = 0;}
 
@@ -35,9 +40,11 @@ public class RealEstateGuiController implements Initializable{
 
             Statement stmtNames = conn.createStatement();
             ResultSet result = stmtNames.executeQuery("SELECT id, name, phone FROM sellers ORDER BY name ASC;");
-            List<String> names = new ArrayList<>();
+            names = new ArrayList<>();
+            phones = new ArrayList<>();
             while (result.next()){
                 names.add(result.getString("name"));
+                phones.add(result.getString("phone"));
             }
 
             ObservableList<String> namesOList = FXCollections.observableArrayList(names);
@@ -59,5 +66,10 @@ public class RealEstateGuiController implements Initializable{
         String selectedName = listView.getSelectionModel().getSelectedItem();
         System.out.println(selectedName);
         labelSeller.setText("Eladó neve: " + selectedName);
+        for (int i = 0; i < names.size(); i++){
+            if (names.get(i) == selectedName){
+                labelPhone.setText("Eladó telefonszáma: " + phones.get(i));
+            }
+        }
     }
 }

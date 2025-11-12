@@ -22,7 +22,7 @@ fx:controller="com.example.realestategui.RealEstateGuiController">
             <Font name="Courier New" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="234.0" layoutY="66.0" text="Eladó telefonszáma:" AnchorPane.leftAnchor="214.0">
+      <Label fx:id="labelPhone" id="labelPhone" layoutX="234.0" layoutY="66.0" text="Eladó telefonszáma:" AnchorPane.leftAnchor="214.0">
          <padding>
             <Insets left="10.0" />
          </padding>
