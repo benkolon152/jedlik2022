@@ -13,7 +13,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ListView layoutX="14.0" layoutY="18.0" prefHeight="565.0" prefWidth="200.0" />
-      <Label layoutX="234.0" layoutY="27.0" text="Label" AnchorPane.leftAnchor="214.0">
+      <Label layoutX="234.0" layoutY="27.0" text="Eladó neve:" AnchorPane.leftAnchor="214.0">
          <padding>
             <Insets left="10.0" />
          </padding>
@@ -21,7 +21,7 @@
             <Font name="Courier New" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="234.0" layoutY="66.0" text="Label" AnchorPane.leftAnchor="214.0">
+      <Label layoutX="234.0" layoutY="66.0" text="Eladó telefonszáma:" AnchorPane.leftAnchor="214.0">
          <padding>
             <Insets left="10.0" />
          </padding>
@@ -29,7 +29,7 @@
             <Font name="Courier New" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="234.0" layoutY="174.0" text="Label" AnchorPane.leftAnchor="214.0">
+      <Label layoutX="234.0" layoutY="174.0" text="Hírdetések száma:" AnchorPane.leftAnchor="214.0">
          <padding>
             <Insets left="10.0" />
          </padding>
@@ -37,6 +37,6 @@
             <Font name="Courier New" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="234.0" layoutY="113.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="546.0" text="Button" />
+      <Button layoutX="234.0" layoutY="113.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="546.0" text="Hírdetések betöltése" />
    </children>
 </AnchorPane>
