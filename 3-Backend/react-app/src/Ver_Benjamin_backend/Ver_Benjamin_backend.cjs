@@ -28,7 +28,8 @@ app.get('/api/ingatlan', (req, res) => {
             return
         } else {
             const refactoredResults = results.map(row => ({
-                ...row, tehermentes: !!row.tehermentes
+                ...row, tehermentes: !!row.tehermentes,
+                hirdetesDatuma: row.hirdetesDatuma.toISOString().slice(0, 10)
             }))
             res.sendStatus(200).json(refactoredResults)
         }
