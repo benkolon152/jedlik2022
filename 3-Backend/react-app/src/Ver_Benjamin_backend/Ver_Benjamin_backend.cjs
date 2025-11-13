@@ -70,6 +70,25 @@ app.post('/api/ingatlan', (req, res) => {
     })
 })
 
+app.delete('/api/ingatlan/:id', (req, res) => {
+    const id = req.params?.id
+    const sql = `DELETE FROM ingatlanok WHERE id = ${id}`
+    conn.query(sql, (err, result) => {
+        if (err){
+            console.warn(err)
+            return res.status(500)
+        } else {
+            console.log(result)
+            if (result.affectedRows){
+                return res.sendStatus(204)
+            } else {
+                return res.sendStatus(404)
+            }
+            
+        }
+    })
+})
+
 const port = 3333
 app.listen(port, err => {
     if (err) console.warn(err)
