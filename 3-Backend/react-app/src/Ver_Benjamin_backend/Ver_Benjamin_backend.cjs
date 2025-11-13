@@ -46,8 +46,28 @@ app.get('/api/ingatlan', (req, res) => {
 
 app.post('/api/ingatlan', (req, res) => {
     console.log(req.body)
+    const {kategoria, leiras, hirdetesDatuma, tehermentes, ar, kepURL} = req.body
+    const _id = req.body._id
 
-    res.status(201).json('TODO')
+    if (!kategoria || !leiras || !hirdetesDatuma || tehermentes === null || !ar || !kepURL) {
+        return res.sendStatus(400).json('Missing required fields')
+    }
+
+    const idStr = _id ?? 'id,'
+    const idQmark = _id ?? '?,'
+
+    const sql = `INSERT INTO ingatlanok (${idStr}kategoria, leiras, hirdetesDatuma, tehermentes, ar, kepURL) VALUES (${idQmark}?, ?, ?, ?, ?, ?)`
+
+    let values = [kategoria, leiras, hirdetesDatuma, tehermentes, ar, kepURL]
+    if (_id) values = [_id, ...values]
+    conn.query(sql, values, (err, result) =>{
+        if (err){
+            console.warn(err)
+            return res.status(400).json('Database error')
+        } else {
+            return res.status(201).json({message: 'Ingatlan added', id: result.insertId})
+        }
+    })
 })
 
 const port = 3333
