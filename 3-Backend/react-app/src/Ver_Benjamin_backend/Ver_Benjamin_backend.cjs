@@ -71,7 +71,7 @@ app.post('/api/ingatlan', (req, res) => {
 })
 
 app.delete('/api/ingatlan/:id', (req, res) => {
-    const id = req.params?.id
+    const id = +req.params?.id
     const sql = `DELETE FROM ingatlanok WHERE id = ${id}`
     conn.query(sql, (err, result) => {
         if (err){
@@ -82,7 +82,7 @@ app.delete('/api/ingatlan/:id', (req, res) => {
             if (result.affectedRows){
                 return res.sendStatus(204)
             } else {
-                return res.sendStatus(404)
+                return res.status(404).json('Az ingatlan nem létezik')
             }
             
         }
