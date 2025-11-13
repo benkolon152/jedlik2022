@@ -14,9 +14,10 @@ app.listen(port, err => {
 })
 
 app.get('/api/ingatlan', (req, res) => {
-    const sql = 'SELECT ingatlanok.id, ingatlanok.kategoria, ingatlanok.leirar, ' +
+    const sql = 'SELECT ingatlanok.id, ingatlanok.leirar, ' +
                     'ingatlanok.hirdetesDatuma, ingatlanok.tehermentes, ' +
                     'ingatlanok.ar, ingatlanok.kepURL, ' +
+                    'kategoriak.nev AS kategoria ' +
                 'FROM ingatlanok ' +
                 'LEFT JOIN kategoriak ON ' +
                     'ingatlanok.kategoria = kategoriak.id'
@@ -26,8 +27,10 @@ app.get('/api/ingatlan', (req, res) => {
             res.sendStatus(500)
             return
         } else {
-            console.log(results)
-            res.sendStatus(200).json(result)
+            const refactoredResults = results.map(row => ({
+                ...row, tehermentes: !!row.tehermentes
+            }))
+            res.sendStatus(200).json(refactoredResults)
         }
     })
 })
