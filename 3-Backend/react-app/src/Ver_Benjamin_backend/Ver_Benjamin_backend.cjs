@@ -50,11 +50,11 @@ app.post('/api/ingatlan', (req, res) => {
     const _id = req.body._id
 
     if (!kategoria || !leiras || !hirdetesDatuma || tehermentes === null || !ar || !kepURL) {
-        return res.sendStatus(400).json('Missing required fields')
+        return res.sendStatus(400).json('Hiányos adatok')
     }
 
-    const idStr = _id ?? 'id,'
-    const idQmark = _id ?? '?,'
+    const idStr = _id ? 'id,' : ''
+    const idQmark = _id ? '?,' : ''
 
     const sql = `INSERT INTO ingatlanok (${idStr}kategoria, leiras, hirdetesDatuma, tehermentes, ar, kepURL) VALUES (${idQmark}?, ?, ?, ?, ?, ?)`
 
@@ -63,9 +63,9 @@ app.post('/api/ingatlan', (req, res) => {
     conn.query(sql, values, (err, result) =>{
         if (err){
             console.warn(err)
-            return res.status(400).json('Database error')
+            return res.status(400).json('Hiányos adatok')
         } else {
-            return res.status(201).json({message: 'Ingatlan added', id: result.insertId})
+            return res.status(201).json({'Id': result.insertId})
         }
     })
 })
